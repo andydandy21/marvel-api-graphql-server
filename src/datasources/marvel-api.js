@@ -13,7 +13,7 @@ class MarvelAPI extends RESTDataSource {
     }
 
     getCharacterList() {
-        return this.getCharacterList('characters')
+        return this.get('characters')
     }
 }
 
