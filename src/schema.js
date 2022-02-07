@@ -12,8 +12,10 @@ const typeDefs = gql`
         name: String!
         "character description, if there is one"
         description: String
-        "character picture"
-        "see https://developer.marvel.com/documentation/images for sizing options"
+        """
+        character picture
+        see https://developer.marvel.com/documentation/images for sizing options
+        """
         thumbnail(thumbnailSize: String): String 
     }
 `
