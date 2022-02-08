@@ -6,6 +6,8 @@ const typeDefs = gql`
         characterList: [Character!]!
         "fetch a list of comic objects"
         comicList: [Comic!]!
+        "fetch a list of creator objects"
+        creatorList: [Creator!]!
     }
     type Character {
         "unique identifier"
@@ -34,6 +36,18 @@ const typeDefs = gql`
         format: String
         pageCount: Int
         thumbnail(thumbnailSize: String): String
+        characters: [Character!]
+        creators: [Creator!]
+    }
+    type Creator {
+        id: ID!
+        firstName: String!
+        middleName: String
+        lastName: String!
+        suffix: String
+        fullName: String
+        thumbnail(thumbnailSize: String): String
+        comics: [Comic!]
     }
 `
 

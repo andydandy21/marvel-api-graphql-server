@@ -19,6 +19,18 @@ class MarvelAPI extends RESTDataSource {
     getComicList() {
         return this.get('comics')
     }
+    getComicCharacters(comicId) {
+        return this.get(`comics/${comicId}/characters`)
+    }
+    getComicCreators(comicId) {
+        return this.get(`comics/${comicId}/creators`)
+    }
+    getCreatorList() {
+        return this.get('creators')
+    }
+    getCreatorComics(creatorId) {
+        return this.get(`creators/${creatorId}/comics`)
+    }
 }
 
 module.exports = MarvelAPI
