@@ -4,6 +4,8 @@ const typeDefs = gql`
     type Query {
         "fetch a list of character objects"
         characterList: [Character!]!
+        "fetch a list of comic objects"
+        comicList: [Comic!]!
     }
     type Character {
         "unique identifier"
@@ -16,7 +18,22 @@ const typeDefs = gql`
         character picture
         see https://developer.marvel.com/documentation/images for sizing options
         """
-        thumbnail(thumbnailSize: String): String 
+        thumbnail(thumbnailSize: String): String
+        "an array of Comic objects" 
+        comics: [Comic!]
+    }
+    type Comic {
+        id: ID!
+        title: String!
+        issueNumber: Int!
+        variantDescription: String
+        isbn: String!
+        upc: String!
+        ean: String!
+        issn: String!
+        format: String
+        pageCount: Int
+        thumbnail(thumbnailSize: String): String
     }
 `
 

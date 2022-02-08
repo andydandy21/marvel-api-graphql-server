@@ -5,15 +5,19 @@ class MarvelAPI extends RESTDataSource {
         super();
         this.baseURL = 'https://gateway.marvel.com/v1/public/'
     }
-
     willSendRequest(request) {
         request.params.set('ts', process.env.MARVEL_TS);
         request.params.set('apikey', process.env.MARVEL_PUBLIC_KEY);
         request.params.set('hash', process.env.MARVEL_HASH);
     }
-
     getCharacterList() {
         return this.get('characters')
+    }
+    getCharacterComics(characterId) {
+        return this.get(`characters/${characterId}/comics`)
+    }
+    getComicList() {
+        return this.get('comics')
     }
 }
 
