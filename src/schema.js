@@ -16,6 +16,8 @@ const typeDefs = gql`
         seriesList: [Series!]!
         "fetch a single series object"
         seriesDetail(id: ID!): Series!
+        "fetch a list of story objects"
+        storyList: [Story!]!
     }
     type Character {
         "unique identifier"
@@ -33,6 +35,7 @@ const typeDefs = gql`
         comics: [Comic!]
         events: [Event!]
         series: [Series!]
+        stories: [Story!]
     }
     type Comic {
         id: ID!
@@ -49,6 +52,7 @@ const typeDefs = gql`
         characters: [Character!]
         creators: [Creator!]
         events: [Event!]
+        stories: [Story!]
     }
     type Creator {
         id: ID!
@@ -61,6 +65,7 @@ const typeDefs = gql`
         comics: [Comic!]
         events: [Event!]
         series: [Series!]
+        stories: [Story!]
     }
     type Event {
         id: ID!
@@ -73,6 +78,7 @@ const typeDefs = gql`
         characters: [Character!]
         creators: [Creator!]
         series: [Series!]
+        stories: [Story!]
         next: Event
         previous: Event
     }
@@ -88,8 +94,22 @@ const typeDefs = gql`
         events: [Event!]
         characters: [Character!]
         creators: [Creator!]
+        stories: [Story!]
         next: Series
         previous: Series
+    }
+    type Story {
+        id: ID!
+        title: String!
+        description: String
+        type: String
+        thumbnail(thumbnailSize: String): String
+        comics: [Comic!]
+        series: [Series!]
+        events: [Event!]
+        characters: [Character!]
+        creators: [Creator!]
+        originalIssue: Comic!
     }
 `
 

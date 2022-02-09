@@ -25,9 +25,15 @@ class MarvelAPI extends RESTDataSource {
     getCharacterSeries(characterId) {
         return this.get(`characters/${characterId}/series`)
     }
+    getCharacterStories(characterId) {
+        return this.get(`characters/${characterId}/stories`)
+    }
 
     getComicList() {
         return this.get('comics')
+    }
+    getComicDetail(comicId) {
+        return this.get(`comics/${comicId}`)
     }
     getComicCharacters(comicId) {
         return this.get(`comics/${comicId}/characters`)
@@ -37,6 +43,9 @@ class MarvelAPI extends RESTDataSource {
     }
     getComicEvents(comicId) {
         return this.get(`comics/${comicId}/events`)
+    }
+    getComicStories(comicId) {
+        return this.get(`comics/${comicId}/stories`)
     }
 
     getCreatorList() {
@@ -50,6 +59,9 @@ class MarvelAPI extends RESTDataSource {
     }
     getCreatorSeries(creatorId) {
         return this.get(`creators/${creatorId}/series`)
+    }
+    getCreatorStories(creatorId) {
+        return this.get(`creators/${creatorId}/stories`)
     }
 
     getEventList() {
@@ -70,6 +82,9 @@ class MarvelAPI extends RESTDataSource {
     getEventSeries(eventId) {
         return this.get(`events/${eventId}/series`)
     }
+    getEventStories(eventId) {
+        return this.get(`events/${eventId}/stories`)
+    }
 
     getSeriesList() {
         return this.get('series')
@@ -88,6 +103,28 @@ class MarvelAPI extends RESTDataSource {
     }
     getSeriesEvents(seriesId) {
         return this.get(`series/${seriesId}/events`)
+    }
+    getSeriesStories(seriesId) {
+        return this.get(`series/${seriesId}/stories`)
+    }
+
+    getStoryList() {
+        return this.get('stories')
+    }
+    getStoryCharacters(storyId) {
+        return this.get(`stories/${storyId}/characters`)
+    }
+    getStoryComics(storyId) {
+        return this.get(`stories/${storyId}/comics`)
+    }
+    getStoryCreators(storyId) {
+        return this.get(`stories/${storyId}/creators`)
+    }
+    getStoryEvents(storyId) {
+        return this.get(`stories/${storyId}/events`)
+    }
+    getStorySeries(storyId) {
+        return this.get(`stories/${storyId}/series`)
     }
 }
 

@@ -27,6 +27,10 @@ const resolvers = {
         seriesDetail: async (_, { id }, { dataSources }) => {
             const serDetail = await dataSources.marvelAPI.getSeriesDetail(id);
             return serDetail.data.results[0];
+        },
+        storyList: async (_, __, { dataSources }) => {
+            const stoList = await dataSources.marvelAPI.getStoryList();
+            return stoList.data.results;
         }
     },
     Character: {
@@ -47,6 +51,11 @@ const resolvers = {
             const characterSeries = await dataSources.marvelAPI.getCharacterSeries(id);
             return characterSeries.data.results;
         },
+        stories: async ({ id }, _, { dataSources }) => {
+            const characterStories = await dataSources.marvelAPI.getCharacterStories(id);
+            if (!characterStories.data?.results) return null
+            return characterStories.data.results;
+        },
     },
     Comic: {
         thumbnail: ({ thumbnail }, { thumbnailSize }) => {
@@ -64,7 +73,12 @@ const resolvers = {
         events: async ({ id }, _, {dataSources}) => {
             const comicEvents = await dataSources.marvelAPI.getComicEvents(id);
             return comicEvents.data.results;
-        }
+        },
+        stories: async ({ id }, _, { dataSources }) => {
+            const comicStories = await dataSources.marvelAPI.getComicStories(id);
+            if (!comicStories.data?.results) return null
+            return comicStories.data.results;
+        },
     },
     Creator: {
         thumbnail: ({ thumbnail }, { thumbnailSize }) => {
@@ -82,7 +96,12 @@ const resolvers = {
         series: async ({ id }, _, { dataSources }) => {
             const creatorSeries = await dataSources.marvelAPI.getCreatorSeries(id);
             return creatorSeries.data.results
-        }
+        },
+        stories: async ({ id }, _, { dataSources }) => {
+            const creatorStories = await dataSources.marvelAPI.getCreatorStories(id);
+            if (!creatorStories.data?.results) return null
+            return creatorStories.data.results;
+        },
     },
     Event: {
         thumbnail: ({ thumbnail }, { thumbnailSize }) => {
@@ -104,6 +123,11 @@ const resolvers = {
         series: async ({ id }, _, { dataSources }) => {
             const eventSeries = await dataSources.marvelAPI.getEventSeries(id);
             return eventSeries.data.results
+        },
+        stories: async ({ id }, _, { dataSources }) => {
+            const eventStories = await dataSources.marvelAPI.getEventStories(id);
+            if (!eventStories.data?.results) return null
+            return eventStories.data.results;
         },
         next: async ({ next }, _, { dataSources }) => {
             if (next) {
@@ -145,6 +169,11 @@ const resolvers = {
             const seriesEvents = await dataSources.marvelAPI.getSeriesEvents(id)
             return seriesEvents.data.results
         },
+        stories: async ({ id }, _, { dataSources }) => {
+            const seriesStories = await dataSources.marvelAPI.getSeriesStories(id);
+            if (!seriesStories.data?.results) return null
+            return seriesStories.data.results;
+        },
         next: async ({ next }, _, { dataSources }) => {
             if (next) {
                 let nextLink = next.resourceURI.split('/');
@@ -159,6 +188,42 @@ const resolvers = {
                 let previousLink = previous.resourceURI.split('/');
                 const previousSeries = await dataSources.marvelAPI.getSeriesDetail(previousLink.pop());
                 return previousSeries.data.results[0]
+            } else {
+                return null
+            }
+        }
+    },
+    Story: {
+        thumbnail: ({ thumbnail }, { thumbnailSize }) => {
+            if (!thumbnail) return null
+            if (!thumbnailSize) thumbnailSize = "portrait_xlarge";
+            return `${thumbnail.path}/${thumbnailSize}.${thumbnail.extension}`;
+        },
+        characters: async ({ id }, _, { dataSources }) => {
+            const storyCharacters = await dataSources.marvelAPI.getStoryCharacters(id)
+            return storyCharacters.data.results
+        },
+        comics: async ({ id }, _, { dataSources }) => {
+            const storyComics = await dataSources.marvelAPI.getStoryComics(id)
+            return storyComics.data.results
+        },
+        creators: async ({ id }, _, { dataSources }) => {
+            const storyCreators = await dataSources.marvelAPI.getStoryCreators(id)
+            return storyCreators.data.results
+        },
+        events: async ({ id }, _, { dataSources }) => {
+            const storyEvents = await dataSources.marvelAPI.getStoryEvents(id)
+            return storyEvents.data.results
+        },
+        series: async ({ id }, _, { dataSources }) => {
+            const storySeries = await dataSources.marvelAPI.getStorySeries(id)
+            return storySeries.data.results
+        },
+        originalIssue: async ({ originalIssue }, _, { dataSources }) => {
+            if (originalIssue) {
+                let originalIssueLink = originalIssue.resourceURI.split('/');
+                const storyOriginalIssue = await dataSources.marvelAPI.getComicDetail(originalIssueLink.pop());
+                return storyOriginalIssue.data.results[0]
             } else {
                 return null
             }
