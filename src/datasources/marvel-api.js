@@ -22,6 +22,9 @@ class MarvelAPI extends RESTDataSource {
     getCharacterEvents(characterId) {
         return this.get(`characters/${characterId}/events`)
     }
+    getCharacterSeries(characterId) {
+        return this.get(`characters/${characterId}/series`)
+    }
 
     getComicList() {
         return this.get('comics')
@@ -45,6 +48,9 @@ class MarvelAPI extends RESTDataSource {
     getCreatorEvents(creatorId) {
         return this.get(`creators/${creatorId}/events`)
     }
+    getCreatorSeries(creatorId) {
+        return this.get(`creators/${creatorId}/series`)
+    }
 
     getEventList() {
         return this.get('events')
@@ -60,6 +66,28 @@ class MarvelAPI extends RESTDataSource {
     }
     getEventCreators(eventId) {
         return this.get(`events/${eventId}/creators`)
+    }
+    getEventSeries(eventId) {
+        return this.get(`events/${eventId}/series`)
+    }
+
+    getSeriesList() {
+        return this.get('series')
+    }
+    getSeriesDetail(seriesId) {
+        return this.get(`series/${seriesId}`)
+    }
+    getSeriesCharacters(seriesId) {
+        return this.get(`series/${seriesId}/characters`)
+    }
+    getSeriesComics(seriesId) {
+        return this.get(`series/${seriesId}/comics`)
+    }
+    getSeriesCreators(seriesId) {
+        return this.get(`series/${seriesId}/creators`)
+    }
+    getSeriesEvents(seriesId) {
+        return this.get(`series/${seriesId}/events`)
     }
 }
 
