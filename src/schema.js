@@ -4,10 +4,16 @@ const typeDefs = gql`
     type Query {
         "fetch a list of character objects"
         characterList: [Character!]!
+        "fetch a single character object"
+        characterDetail(id: ID!): Character!
         "fetch a list of comic objects"
         comicList: [Comic!]!
+        "fetch a single comic objects"
+        comicDetail(id: ID!): Comic!
         "fetch a list of creator objects"
         creatorList: [Creator!]!
+        "fetch a single creator object"
+        creatorDetail(id: ID!): Creator!
         "fetch a list of event objects"
         eventList: [Event!]!
         "fetch a single event object"
@@ -18,6 +24,8 @@ const typeDefs = gql`
         seriesDetail(id: ID!): Series!
         "fetch a list of story objects"
         storyList: [Story!]!
+        "fetch a single story object"
+        storyDetail(id: ID!): Story!
     }
     type Character {
         "unique identifier"

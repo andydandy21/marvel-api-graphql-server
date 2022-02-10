@@ -4,13 +4,25 @@ const resolvers = {
             const charList = await dataSources.marvelAPI.getCharacterList();
             return charList.data.results
         },
+        characterDetail: async (_, { id }, { dataSources }) => {
+            const charDetail = await dataSources.marvelAPI.getCharacterDetail(id);
+            return charDetail.data.results[0];
+        },
         comicList: async (_, __, { dataSources }) => {
             const comList = await dataSources.marvelAPI.getComicList();
             return comList.data.results;
         },
+        comicDetail: async (_, { id }, { dataSources }) => {
+            const comDetail = await dataSources.marvelAPI.getComicDetail(id);
+            return comDetail.data.results[0];
+        },
         creatorList: async (_, __, { dataSources }) => {
             const creList = await dataSources.marvelAPI.getCreatorList();
             return creList.data.results;
+        },
+        creatorDetail: async (_, { id }, { dataSources }) => {
+            const creDetail = await dataSources.marvelAPI.getCreatorDetail(id);
+            return creDetail.data.results[0];
         },
         eventList: async (_, __, { dataSources }) => {
             const evList = await dataSources.marvelAPI.getEventList();
@@ -31,6 +43,10 @@ const resolvers = {
         storyList: async (_, __, { dataSources }) => {
             const stoList = await dataSources.marvelAPI.getStoryList();
             return stoList.data.results;
+        },
+        storyDetail: async (_, { id }, { dataSources }) => {
+            const stoDetail = await dataSources.marvelAPI.getStoryDetail(id);
+            return stoDetail.data.results[0];
         }
     },
     Character: {

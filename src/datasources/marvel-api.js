@@ -16,6 +16,9 @@ class MarvelAPI extends RESTDataSource {
     getCharacterList() {
         return this.get('characters')
     }
+    getCharacterDetail(characterId) {
+        return this.get(`characters/${characterId}`)
+    }
     getCharacterComics(characterId) {
         return this.get(`characters/${characterId}/comics`)
     }
@@ -50,6 +53,9 @@ class MarvelAPI extends RESTDataSource {
 
     getCreatorList() {
         return this.get('creators')
+    }
+    getCreatorDetail(creatorId) {
+        return this.get(`creators/${creatorId}`)
     }
     getCreatorComics(creatorId) {
         return this.get(`creators/${creatorId}/comics`)
@@ -110,6 +116,9 @@ class MarvelAPI extends RESTDataSource {
 
     getStoryList() {
         return this.get('stories')
+    }
+    getStoryDetail(storyId) {
+        return this.get(`stories/${storyId}`)
     }
     getStoryCharacters(storyId) {
         return this.get(`stories/${storyId}/characters`)
