@@ -1,0 +1,24 @@
+
+service: apollo-lambda
+useDotenv: true
+provider:
+  name: aws
+  runtime: nodejs14.x
+functions:
+  graphql:
+    handler: src/index.graphqlHandler
+    environment:
+      MARVEL_PUBLIC_KEY: ${env:MARVEL_PUBLIC_KEY}
+      MARVEL_TS: ${env:MARVEL_TS}
+      MARVEL_HASH: ${env:MARVEL_HASH}
+    events:
+    - http:
+        path: /
+        method: post
+        cors: true
+    - http:
+        path: /
+        method: get
+        cors: true
+plugins:
+  - serverless-offline
