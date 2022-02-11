@@ -28,18 +28,11 @@ const typeDefs = gql`
         storyDetail(id: ID!): Story!
     }
     type Character {
-        "unique identifier"
         id: ID!
-        "name of the character"
         name: String!
-        "character description, if there is one"
         description: String
-        """
-        character picture
-        see https://developer.marvel.com/documentation/images for sizing options
-        """
+        "see https://developer.marvel.com/documentation/images for sizing options"
         thumbnail(thumbnailSize: String): String
-        "an array of Comic objects" 
         comics: [Comic!]
         events: [Event!]
         series: [Series!]
@@ -56,6 +49,7 @@ const typeDefs = gql`
         issn: String!
         format: String
         pageCount: Int
+        "see https://developer.marvel.com/documentation/images for sizing options"
         thumbnail(thumbnailSize: String): String
         characters: [Character!]
         creators: [Creator!]
@@ -69,6 +63,7 @@ const typeDefs = gql`
         lastName: String!
         suffix: String
         fullName: String
+        "see https://developer.marvel.com/documentation/images for sizing options"
         thumbnail(thumbnailSize: String): String
         comics: [Comic!]
         events: [Event!]
@@ -81,6 +76,7 @@ const typeDefs = gql`
         description: String
         start: String
         end: String
+        "see https://developer.marvel.com/documentation/images for sizing options"
         thumbnail(thumbnailSize: String): String
         comics: [Comic!]
         characters: [Character!]
@@ -97,6 +93,7 @@ const typeDefs = gql`
         startYear: String
         endYear: String
         rating: String
+        "see https://developer.marvel.com/documentation/images for sizing options"
         thumbnail(thumbnailSize: String): String
         comics: [Comic!]
         events: [Event!]
@@ -111,6 +108,7 @@ const typeDefs = gql`
         title: String!
         description: String
         type: String
+        "see https://developer.marvel.com/documentation/images for sizing options"
         thumbnail(thumbnailSize: String): String
         comics: [Comic!]
         series: [Series!]
