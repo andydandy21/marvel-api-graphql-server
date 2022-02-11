@@ -22,11 +22,11 @@
 
 <h2>Quick Start</h2>
 <h3>Clone the Repo</h3>
-`git clone https://github.com/andydandy21/marvel-api-graphql-server`
+<pre><code>git clone https://github.com/andydandy21/marvel-api-graphql-server</pre></code>
 <h3>Move Into Folder</h3>
-`cd marvel-api-graphql-server`
+<pre><code>cd marvel-api-graphql-server</pre></code>
 <h3>Install Dependencies</h3>
-`npm install`
+<pre><code>npm install</pre></code>
 <h3>Prepare Your AWS Account</h3>
 <p>
   visit 
@@ -47,16 +47,16 @@
 <p>
   Make a .env file at the root directory. In this file, add the following...
 </p>
-```
-MARVEL_PUBLIC_KEY=< the public api key provided by Marvel >
-MARVEL_TS=< a timestamp or any long string >
-MARVEL_HASH=< an md5 hash of your publicKey + ts + privateKey >
-```
+<pre><code>
+MARVEL_PUBLIC_KEY=// the public api key provided by Marvel
+MARVEL_TS=// a timestamp or any long string
+MARVEL_HASH=// an md5 hash of your publicKey + ts + privateKey
+</code></pre>
 <h3>Deploy to Lambda</h3>
-`serverless deploy`
+<pre><code>serverless deploy</code></pre>
 
 <h2>Local Development</h2>
 <p>
   You can run any changes in your code locally by running the following command...
 </p>
-`serverless offline start`
+<pre><code>serverless offline start</pre></code>
