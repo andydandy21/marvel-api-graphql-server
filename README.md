@@ -60,3 +60,11 @@ MARVEL_HASH=// an md5 hash of your publicKey + ts + privateKey
   You can run any changes in your code locally by running the following command...
 </p>
 <pre><code>serverless offline start</pre></code>
+<h2>Licensing</h2>
+<p>
+  marvel-api-graphql-server is licensed under the
+  <a href="https://github.com/andydandy21/marvel-api-graphql-server/blob/main/LICENSE.md">
+    MIT License
+  </a>
+</p>
+
